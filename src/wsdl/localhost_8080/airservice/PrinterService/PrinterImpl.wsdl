@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://aos.fel.cvut.cz/airservice/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PrinterService" targetNamespace="http://aos.fel.cvut.cz/airservice/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://aos.fel.cvut.cz/airservice/" elementFormDefault="unqualified" targetNamespace="http://aos.fel.cvut.cz/airservice/" version="1.0">
+<xs:element name="Reservation" type="tns:reservation"/>
+<xs:element name="helou" type="tns:helou"/>
+<xs:element name="helouResponse" type="tns:helouResponse"/>
+<xs:element name="printReservation" type="tns:printReservation"/>
+<xs:element name="printReservationResponse" type="tns:printReservationResponse"/>
+<xs:complexType name="helou">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="helouResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="printReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="reservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="created" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="flightName" type="xs:string"/>
+      <xs:element name="seats" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="printReservationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="printReservationResponse">
+    <wsdl:part element="tns:printReservationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helouResponse">
+    <wsdl:part element="tns:helouResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helou">
+    <wsdl:part element="tns:helou" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printReservation">
+    <wsdl:part element="tns:printReservation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Printer">
+    <wsdl:operation name="helou">
+      <wsdl:input message="tns:helou" name="helou">
+    </wsdl:input>
+      <wsdl:output message="tns:helouResponse" name="helouResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="printReservation">
+      <wsdl:input message="tns:printReservation" name="printReservation">
+    </wsdl:input>
+      <wsdl:output message="tns:printReservationResponse" name="printReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PrinterServiceSoapBinding" type="tns:Printer">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="helou">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="helou">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helouResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="printReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="printReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="printReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PrinterService">
+    <wsdl:port binding="tns:PrinterServiceSoapBinding" name="PrinterPort">
+      <soap:address location="http://localhost:8080/airservice/PrinterService/PrinterImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

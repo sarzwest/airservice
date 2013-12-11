@@ -1,0 +1,7 @@
+
+<h2 id="error"></h2>
+<script type="text/javascript">
+    function setError(errorText) {
+        document.getElementById("error").innerHTML = errorText;
+    }
+</script>

@@ -1,0 +1,56 @@
+/* 
+    Document   : style
+    Created on : 20.10.2013, 15:59:26
+    Author     : banjo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+fieldset{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+
+.printResultTable {
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: central;  
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.printResultTable td{
+    border-style: solid;
+    border-width: 1px;   
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+
+
+.formTable{
+    border-collapse: collapse;
+    
+}
+
+.formTable td{
+    text-align: center;
+    vertical-align: central;
+    border-style: solid;
+    border-width: 1px;   
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+
+.formTable tr td{
+    border: 0px;
+    text-align: left;
+    padding: 5px;
+}
