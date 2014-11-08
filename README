@@ -1,0 +1,5 @@
+Spousteni JBoss AS v NetBeans s jinou konfiguraci
+V properties serveru do VM options nastavit -Djboss.server.default.config=standalone-full.xml
+
+Pro sledování HTTP komunikace využijte JVM parametr 
+-Dcom.sun.xml.ws.transport.http.client.HttpTransportPipe.dump=true

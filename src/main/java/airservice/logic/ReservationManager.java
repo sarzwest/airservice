@@ -19,7 +19,7 @@ import airservice.util.Properties;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.inject.Inject;
-import org.centralbank.client.SecuredBankClient;
+//import org.centralbank.client.SecuredBankClient;
 
 /**
  *
@@ -29,9 +29,9 @@ public class ReservationManager {
 
     @Inject
     TimerBean timer;
-    @Inject
-    @SecuredClient
-    SecuredBankClient bankClient;
+//    @Inject
+//    @SecuredClient
+//    SecuredBankClient bankClient;
 
     public ReservationManager() {
     }
@@ -116,8 +116,8 @@ public class ReservationManager {
         }
         if (reservation.getState() == StateChoices.NEW) {
             //pay the reservation - nemusi byt na checkpoint 2
-            bankClient.pay(card.getNumber(), Properties.AIRSERVICE_BANK_ACCOUNT, (long) reservation.getFlight().getPrice(), "Payment for flight name: " + reservation.getFlight().getName());
-            reservation.setState(StateChoices.PAID);
+//            bankClient.pay(card.getNumber(), Properties.AIRSERVICE_BANK_ACCOUNT, (long) reservation.getFlight().getPrice(), "Payment for flight name: " + reservation.getFlight().getName());
+//            reservation.setState(StateChoices.PAID);
         } else {
             throw new SystemException("Reservation is in unexpected state: " + reservation.getState());
         }

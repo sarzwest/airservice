@@ -48,7 +48,7 @@ public class FillDB implements ServletContextListener{
             Date date = calendar.getTime();
             FlightInput fi = new FlightInput(i + 10 * 50, "CSA " + i, i*1000, 100, new SimpleDateFormat(Properties.DATE_FORMAT).format(date), i+1, i+5);
             FlightEntity flightEntity = new FlightEntity(fi);
-            float distance = distAOS.getDistance(flightEntity.getFrom().getLocation(), flightEntity.getTo().getLocation());
+            float distance = 478.0f;
             flightEntity.setDistance(distance);
             AOSMemoryDB.addFlight(flightEntity);
         }

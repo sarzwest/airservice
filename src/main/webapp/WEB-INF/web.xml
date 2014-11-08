@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <listener>
         <listener-class>airservice.test.FillDB</listener-class>
@@ -11,7 +12,7 @@
             30
         </session-timeout>
     </session-config>
-    <servlet>
+    <!----><servlet>
         <servlet-name>RESTEasy-JSAPI</servlet-name>
         <servlet-class>org.jboss.resteasy.jsapi.JSAPIServlet</servlet-class>
     </servlet>
@@ -41,14 +42,19 @@
             airservice.resources.DestinationResource,
             airservice.resources.FlightResource,
             airservice.resources.ReservationResource,
-            airservice.resources.ResourcesListingResource
+            airservice.resources.ResourcesListingResource,
+            airservice.resources.TestResource
         </param-value>
     </context-param>
-    <context-param>
+    <!--<context-param>
+        <param-name>resteasy.providers</param-name>
+        <param-value>airservice.resources.tests.MyExceptionMapper</param-value>
+    </context-param>-->
+    <!--<context-param>
         <param-name>resteasy.role.based.security</param-name>
         <param-value>true</param-value>
     </context-param>
-    <!--<security-constraint>
+    <security-constraint>
         <display-name>admin-rights</display-name>
         <web-resource-collection>
             <web-resource-name>destination</web-resource-name>
@@ -86,7 +92,7 @@
     <security-role>
         <description/>
         <role-name>manager</role-name>
-    </security-role>-->
+    </security-role>
     <security-constraint>
         <display-name>security</display-name>
         <web-resource-collection>
@@ -111,5 +117,5 @@
     <security-role>
         <description/>
         <role-name>manager</role-name>
-    </security-role>
+    </security-role>-->
 </web-app>

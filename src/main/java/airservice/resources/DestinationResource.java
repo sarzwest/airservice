@@ -11,12 +11,9 @@ import airservice.exceptions.BadRequestException;
 import airservice.entity.destination.DestinationInput;
 import airservice.entity.destination.DestinationOutput;
 import airservice.exceptions.SystemException;
-import airservice.restclient.Destination.DestinationInfoDTO;
 import airservice.restclient.Destination.DestinationInfoDTO.Location;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
@@ -59,7 +56,7 @@ public class DestinationResource {
     public Collection<DestinationOutput> getAllDestinations() {
         Collection<DestinationOutput> destinationsReturn = new ArrayList<DestinationOutput>();
         for (DestinationEntity destination : AOSMemoryDB.getAllDestinations()) {
-            DestinationOutput mappingDestination = new DestinationOutput(destination);//Mapper.convertToMappingDestination(destination, context.getAbsolutePathBuilder());
+            DestinationOutput mappingDestination = new DestinationOutput(destination);
             destinationsReturn.add(mappingDestination);
         }
         return destinationsReturn;
