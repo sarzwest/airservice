@@ -8,18 +8,15 @@ package airservice.resources.tests;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
  *
  * @author Tomas "sarzwest" Jiricek
  */
-public abstract class ParentResource extends Parent2Resource{
+public abstract class Class1 extends Class1_1 implements IFace1_2{
     
-    @GET
-    @Path("inheritance")
-    public Response getInheritance(){
-        return Response.ok("toto je inheritance", MediaType.APPLICATION_JSON).build();
-    }
+//    @GET
+//    @Path("1")
+    public abstract Response foo();
 }

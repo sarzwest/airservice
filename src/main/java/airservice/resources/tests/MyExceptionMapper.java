@@ -15,7 +15,7 @@ import javax.ws.rs.ext.Provider;
  *
  * @author Tomas "sarzwest" Jiricek
  */
-//@Provider
+@Provider
 public class MyExceptionMapper implements ExceptionMapper<MyException>{
 
     @Override

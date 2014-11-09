@@ -12,7 +12,8 @@
             30
         </session-timeout>
     </session-config>
-    <!----><servlet>
+    <!---->
+    <servlet>
         <servlet-name>RESTEasy-JSAPI</servlet-name>
         <servlet-class>org.jboss.resteasy.jsapi.JSAPIServlet</servlet-class>
     </servlet>
@@ -43,13 +44,21 @@
             airservice.resources.FlightResource,
             airservice.resources.ReservationResource,
             airservice.resources.ResourcesListingResource,
-            airservice.resources.TestResource
+            airservice.resources.TestResource,
+            airservice.resources.EJBTestResource
         </param-value>
     </context-param>
-    <!--<context-param>
+    <context-param>
         <param-name>resteasy.providers</param-name>
-        <param-value>airservice.resources.tests.MyExceptionMapper</param-value>
-    </context-param>-->
+        <param-value>
+            airservice.resources.tests.MyExceptionMapper,
+            airservice.resources.tests.LoggingFilter,
+            airservice.resources.tests.BeforeMatchingFilter,
+            airservice.resources.tests.InputInterceptor,
+            airservice.resources.tests.OutputInterceptor,
+            airservice.resources.tests.CompressInterceptor
+        </param-value>
+    </context-param>
     <!--<context-param>
         <param-name>resteasy.role.based.security</param-name>
         <param-value>true</param-value>

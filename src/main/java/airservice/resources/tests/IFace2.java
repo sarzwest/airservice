@@ -14,10 +14,9 @@ import javax.ws.rs.core.Response;
  *
  * @author Tomas "sarzwest" Jiricek
  */
-interface ParentInterface4 {
+public interface IFace2{
     
 //    @GET
-//    @Path("inheritanceinterface5")
-//    public Response getInheritance5();
-    
+//    @Path("2")
+    public Response foo();
 }

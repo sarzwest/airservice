@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package airservice.resources.tests;
 
 import javax.ws.rs.GET;
@@ -16,20 +15,20 @@ import javax.ws.rs.core.Response;
  * @author Tomas "sarzwest" Jiricek
  */
 public interface ParentInterface {
-    
+
     @GET
     @Path("inheritancefrominterface")
-    public  Response getInheritance();
-    
+    public Response getInheritance();
+
     @GET
     @Path("inheritance2")
-    public  Response getInheritance2();
-    
+    public Response getInheritance2();
+
     @GET
     @Path("inheritanceinterface1")
     public Response getInheritance3();
-    
-//    @GET
-//    @Path("inheritanceinterface5a")
-//    public Response getInheritance5();
+
+    @GET
+    @Path("inheritanceinterface5a")
+    public Response getInheritance5();
 }
