@@ -21,6 +21,11 @@ import airservice.resources.tests.ParentResource;
 import airservice.resources.tests.SubResource;
 import airservice.resources.tests.UserEntity;
 import airservice.resources.tests.Wrapper;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,7 +42,7 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+//import javax.validation.constraints.Pattern;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -45,7 +50,9 @@ import javax.ws.rs.Encoded;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
@@ -63,6 +70,7 @@ import org.jboss.resteasy.spi.validation.ValidateRequest;
  *
  * @author Tomas "sarzwest" Jiricek
  */
+@Api(value = "/pet", description = "Operations about pets")
 @Path("/rest/test")
 public class TestResource extends Class1 implements IFace2, ParentInterface, Parent2Interface {
 
@@ -261,11 +269,11 @@ public class TestResource extends Class1 implements IFace2, ParentInterface, Par
      * @param number
      * @return
      */
-    @GET
-    @Path("valid/qp")
-    public Response validateParam(@Pattern(regexp = "[0-9]{2}", message = "Parameter must be a valid number") @QueryParam("twodigitnumber") String number) {
-        return Response.ok("yes it is two digit number", MediaType.TEXT_PLAIN).build();
-    }
+//    @GET
+//    @Path("valid/qp")
+//    public Response validateParam(@Pattern(regexp = "[0-9]{2}", message = "Parameter must be a valid number") @QueryParam("twodigitnumber") String number) {
+//        return Response.ok("yes it is two digit number", MediaType.TEXT_PLAIN).build();
+//    }
 
     /**
      * Odchozi validace
@@ -273,13 +281,13 @@ public class TestResource extends Class1 implements IFace2, ParentInterface, Par
      * @param number
      * @return
      */
-    @GET
-    @Path("valid/retval")
-    @Valid
-    @Pattern(regexp = "[0-9]{2}", message = "Parameter must be a valid number")
-    public String validateParam2(@QueryParam("twodigitnumber") String number) {
-        return number;
-    }
+//    @GET
+//    @Path("valid/retval")
+//    @Valid
+//    @Pattern(regexp = "[0-9]{2}", message = "Parameter must be a valid number")
+//    public String validateParam2(@QueryParam("twodigitnumber") String number) {
+//        return number;
+//    }
 
     /**
      * {
@@ -331,5 +339,21 @@ public class TestResource extends Class1 implements IFace2, ParentInterface, Par
         });
     }
     
-    
+    @GET
+  @Path("/{petId}")
+  @ApiOperation(value = "Find pet by ID", 
+    notes = "Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error conditions", 
+    response = String.class)
+  @ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"),
+      @ApiResponse(code = 404, message = "Pet not found") })
+  public Response getPetById(
+      @ApiParam(value = "ID of pet that needs to be fetched", allowableValues = "range[1,5]", required = true) @PathParam("petId") String petId)
+      throws NotFoundException {
+//    Pet pet = petData.getPetbyId(ru.getLong(0, 100000, 0, petId));
+//    if (null != pet) {
+      return null;
+//    } else {
+//      throw new NotFoundException(404, "Pet not found");
+//    }
+  }
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<title>API Document</title>
+
+<xmp theme="united" style="display:none;">
+#Swagger Maven Plugin Sample
+This is a sample for swagger-maven-plugin
+
+Terms of Service: [http://www.github.com/kongchen/swagger-maven-plugin](http://www.github.com/kongchen/swagger-maven-plugin)
+
+Contact: [kongchen#gmail$com](mailto:kongchen#gmail$com)
+
+License: [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+
+
+BasePath: http://petstore.swagger.wordnik.com/api
+
+Api Version: v1
+
+## APIs
+### /pet
+
+#### **GET** `/rest/test/{petId}`
+##### getPetById 
+
+Find pet by ID
+Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error conditions
+
+###### URL
+http://petstore.swagger.wordnik.com/api/rest/test/{petId}
+###### Parameters
+- path
+
+<table border="1">
+    <tr>
+        <th>Parameter</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Data Type</th>
+    </tr>
+    <tr>
+        <th>petId</th>
+        <td>true</td>
+        <td>ID of pet that needs to be fetched</td>
+        <td>string</td>
+    </tr>
+</table>
+- header
+
+<table border="1">
+    <tr>
+        <th>Parameter</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Data Type</th>
+    </tr>
+    <tr>
+        <th>X-user</th>
+        <td>false</td>
+        <td></td>
+        <td>string</td>
+    </tr>
+</table>
+
+###### Response
+[string](#)
+
+
+###### Errors
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 400    | Invalid ID supplied | - |
+| 404    | Pet not found | - |
+
+
+- - -
+
+## Data Types
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
