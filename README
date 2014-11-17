@@ -3,3 +3,6 @@ V properties serveru do VM options nastavit -Djboss.server.default.config=standa
 
 Pro sledování HTTP komunikace využijte JVM parametr 
 -Dcom.sun.xml.ws.transport.http.client.HttpTransportPipe.dump=true
+
+-Pwildfly - maven profil, ktery provede deploy na WildFly 8.1
+-Dmaven.test.skip=true - maven preskoci testy

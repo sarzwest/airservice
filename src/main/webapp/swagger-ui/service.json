@@ -1,0 +1,17 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.2",
+  "apis" : [ {
+    "path" : "/rest/test.{format}",
+    "description" : "Testovaci resource class"
+  } ],
+  "info" : {
+    "title" : "Airservice testing resource for swagger",
+    "description" : "Testing API for swagger",
+    "termsOfServiceUrl" : "http://www.github.com/kongchen/swagger-maven-plugin",
+    "contact" : "jiratom@seznam.cz",
+    "license" : "Apache 2.0",
+    "licenseUrl" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+  },
+  "basePath" : "http://papastrojwork.local:8080/airservice-1.0/swagger-ui"
+}

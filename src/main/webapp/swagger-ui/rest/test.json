@@ -1,0 +1,551 @@
+{
+  "apiVersion" : "v1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "http://papastrojwork.local:8080/airservice-1.0",
+  "resourcePath" : "/rest/test",
+  "apis" : [ {
+    "path" : "/rest/test/collection",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu",
+      "notes" : "",
+      "type" : "array",
+      "items" : {
+        "$ref" : "destination"
+      },
+      "nickname" : "collection",
+      "produces" : [ "application/xml" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/rawtype",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "Tady jsem si hral s generiky. Trida wrapper v sobe obsahuje generika",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "rawType",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "Wrapper",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/reqlist",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "Metoda bere jako parametr kolekci objektu",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "regList",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "array",
+        "items" : {
+          "$ref" : "destination"
+        },
+        "paramType" : "body",
+        "allowMultiple" : true
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/pathparam/{path}",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "PathParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getPathParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "path",
+        "required" : true,
+        "type" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/queryparam",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "QueryParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getQueryParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "q",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/matrixparam",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "MatrixParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getMatrixParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "m",
+        "required" : false,
+        "type" : "array",
+        "items" : {
+          "type" : "string"
+        },
+        "paramType" : "matrix",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/rawtype2",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "Metoda pouzivajici generika. Muze konzumovat jakykoliv typ, vsechno je totiz serializovano do likedhashmapy",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "rawType2",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "List",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/exceptionmapper",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Vyjimka mapovana na response pomoci exception mapper",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "exceptionMapper",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/compressed",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Zkouska interceptoru",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getCompressed",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/qp",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Prichozi validace Je potreba posilat hlavicku Accept: application/json",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "twodigitnumber",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/reqent",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "@Valid zapina validaci na vsech fieldech obsahujici omezeni",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateReqEntity",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "UserEntity",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/async",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Asynchronni volani",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "async",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "AsyncResponse",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/encoded",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "nedekoduje url a query string",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "encoded",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "text",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "status OK",
+        "responseModel" : "string"
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/annotatedfield",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Anotovany field je nasetovany",
+      "notes" : "",
+      "type" : "string",
+      "nickname" : "annotatedField",
+      "produces" : [ "text/plain" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/entityparam/{id}",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "entity parameter test",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "newDestination",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "DestOutChild",
+        "paramType" : "body",
+        "allowMultiple" : false
+      }, {
+        "name" : "id",
+        "required" : true,
+        "type" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/exception",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "Metoda vyhazuje WebApplicationException",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "exception",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "Wrapper",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  } ],
+  "models" : {
+    "AsyncResponse" : {
+      "id" : "AsyncResponse",
+      "properties" : {
+        "cancelled" : {
+          "type" : "boolean"
+        },
+        "done" : {
+          "type" : "boolean"
+        },
+        "suspended" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "DestOutChild" : {
+      "id" : "DestOutChild",
+      "required" : [ "name" ],
+      "properties" : {
+        "varInDestChild" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "List" : {
+      "id" : "List",
+      "properties" : {
+        "empty" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "UserEntity" : {
+      "id" : "UserEntity",
+      "properties" : {
+        "nullableInput" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "nullableOutput" : {
+          "type" : "string"
+        }
+      }
+    },
+    "destination" : {
+      "id" : "destination",
+      "required" : [ "name" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Wrapper" : {
+      "id" : "Wrapper",
+      "properties" : {
+        "destO" : {
+          "$ref" : "T"
+        },
+        "varInWrapper" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
