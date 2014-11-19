@@ -4,6 +4,38 @@
   "basePath" : "http://papastrojwork.local:8080/airservice-1.0",
   "resourcePath" : "/rest/test",
   "apis" : [ {
+    "path" : "/rest/test/retcontenttype",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Gets the status info",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getContentType",
+      "produces" : [ "text/plain", "application/json", "application/xml" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "Everything OK",
+        "responseModel" : "destination"
+      }, {
+        "code" : 204,
+        "message" : "NO content friend",
+        "responseModel" : "Map"
+      } ]
+    } ]
+  }, {
     "path" : "/rest/test/collection",
     "operations" : [ {
       "method" : "GET",
@@ -27,6 +59,35 @@
         "type" : "string",
         "paramType" : "header",
         "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/status",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Gets the status info",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getStatus",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "Everything OK"
+      }, {
+        "code" : 204,
+        "message" : "NO content friend"
       } ]
     } ]
   }, {
@@ -56,6 +117,97 @@
         "required" : false,
         "type" : "Wrapper",
         "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/encoded",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "nedekoduje url a query string",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "encoded",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "text",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "status OK",
+        "responseModel" : "string"
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/annotatedfield",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Anotovany field je nasetovany",
+      "notes" : "",
+      "type" : "string",
+      "nickname" : "annotatedField",
+      "produces" : [ "text/plain" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/entityparam/{id}",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "entity parameter test",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "newDestination",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "DestOutChild",
+        "paramType" : "body",
+        "allowMultiple" : false
+      }, {
+        "name" : "id",
+        "required" : true,
+        "type" : "string",
+        "paramType" : "path",
         "allowMultiple" : false
       } ]
     } ]
@@ -176,6 +328,90 @@
           "type" : "string"
         },
         "paramType" : "matrix",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/cookieparam",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "CookieParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getCookieParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "c",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "cookie",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/headerparam",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "HeaderParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getHeaderParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "h",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/formparam",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "FormParam jako parametr metody",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getFormParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "f",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "form",
         "allowMultiple" : false
       } ]
     } ]
@@ -340,97 +576,6 @@
       } ]
     } ]
   }, {
-    "path" : "/rest/test/encoded",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "nedekoduje url a query string",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "encoded",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "text",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ],
-      "responseMessages" : [ {
-        "code" : 200,
-        "message" : "status OK",
-        "responseModel" : "string"
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/annotatedfield",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Anotovany field je nasetovany",
-      "notes" : "",
-      "type" : "string",
-      "nickname" : "annotatedField",
-      "produces" : [ "text/plain" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/entityparam/{id}",
-    "operations" : [ {
-      "method" : "POST",
-      "summary" : "entity parameter test",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "newDestination",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "body",
-        "required" : false,
-        "type" : "DestOutChild",
-        "paramType" : "body",
-        "allowMultiple" : false
-      }, {
-        "name" : "id",
-        "required" : true,
-        "type" : "string",
-        "paramType" : "path",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
     "path" : "/rest/test/exception",
     "operations" : [ {
       "method" : "POST",
@@ -492,6 +637,14 @@
         "id" : {
           "type" : "integer",
           "format" : "int64"
+        }
+      }
+    },
+    "Map" : {
+      "id" : "Map",
+      "properties" : {
+        "empty" : {
+          "type" : "boolean"
         }
       }
     },

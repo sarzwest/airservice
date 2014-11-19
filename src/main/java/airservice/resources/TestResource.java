@@ -32,6 +32,7 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -149,8 +150,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne
 	 * zachytit Listy JAXB objektu
 	 */
-	@ApiOperation(value = "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu"
-			, responseContainer = "List", response = DestinationOutput.class)
+	@ApiOperation(value = "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu", responseContainer = "List", response = DestinationOutput.class)
 	@GET
 	@Path(value = "/collection")
 	@Produces(MediaType.APPLICATION_XML)
@@ -187,7 +187,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 				new DestOutChild());
 		return wrapper;
 	}
-	
+
 	/**
 	 * Metoda bere jako parametr kolekci objektu
 	 */
@@ -196,41 +196,72 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	@Path(value = "/reqlist")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response regList(@ApiParam(allowMultiple = true)List<DestinationOutput> destination) {
+	public Response regList(
+			@ApiParam(allowMultiple = true) List<DestinationOutput> destination) {
 		for (DestinationOutput d : destination) {
 			System.out.println(d.getName());
 		}
 		return Response.status(Status.NO_CONTENT).build();
 	}
-	
+
 	/**
 	 * PathParam jako parametr metody
 	 */
 	@ApiOperation(value = "PathParam jako parametr metody")
 	@GET
 	@Path("pathparam/{path}")
-	public void getPathParam(@PathParam("path")String path){
+	public void getPathParam(@PathParam("path") String path) {
 		System.out.println(path);
 	}
-	
+
 	/**
 	 * QueryParam jako parametr metody
 	 */
 	@ApiOperation(value = "QueryParam jako parametr metody")
 	@GET
 	@Path("queryparam")
-	public void getQueryParam(@QueryParam("q")String q){
+	public void getQueryParam(@QueryParam("q") String q) {
 		System.out.println(q);
 	}
-	
+
 	/**
 	 * MatrixParam jako parametr metody
 	 */
 	@ApiOperation(value = "MatrixParam jako parametr metody")
 	@POST
 	@Path("matrixparam")
-	public void getMatrixParam(@MatrixParam("m")List<String> m){
+	public void getMatrixParam(@MatrixParam("m") List<String> m) {
 		System.out.println(m);
+	}
+
+	/**
+	 * CookieParam jako parametr metody
+	 */
+	@ApiOperation(value = "CookieParam jako parametr metody")
+	@POST
+	@Path("cookieparam")
+	public void getCookieParam(@CookieParam("c") String c) {
+		System.out.println(c);
+	}
+
+	/**
+	 * HeaderParam jako parametr metody
+	 */
+	@ApiOperation(value = "HeaderParam jako parametr metody")
+	@POST
+	@Path("headerparam")
+	public void getHeaderParam(@HeaderParam("h") String h) {
+		System.out.println(h);
+	}
+
+	/**
+	 * FormParam jako parametr metody
+	 */
+	@ApiOperation(value = "FormParam jako parametr metody")
+	@POST
+	@Path("formparam")
+	public void getFormParam(@FormParam("f") String f) {
+		System.out.println(f);
 	}
 
 	/**
@@ -257,6 +288,31 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 			list.add(t);
 		}
 		return list;
+	}
+
+	/**
+	 * Gets the status info
+	 */
+	@ApiOperation(value = "Gets the status info")
+	@ApiResponses({ @ApiResponse(code = 200, message = "Everything OK"),
+			@ApiResponse(code = 204, message = "NO content friend") })
+	@GET
+	@Path("status")
+	public Response getStatus() {
+		return Response.status(Status.OK).build();
+	}
+	
+	/**
+	 * Gets the status info
+	 */
+	@ApiOperation(value = "Gets the status info")
+	@ApiResponses({ @ApiResponse(code = 200, message = "Everything OK", response = DestinationOutput.class),
+			@ApiResponse(code = 204, message = "NO content friend", response = Map.class) })
+	@GET
+	@Path("retcontenttype")
+	@Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON, "application/xml"})
+	public Response getContentType() {
+		return Response.status(Status.OK).build();
 	}
 
 	/**
