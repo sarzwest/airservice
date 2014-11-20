@@ -94,6 +94,11 @@
             <version>2.6.6</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+        	<groupId>commons-io</groupId>
+        	<artifactId>commons-io</artifactId>
+        	<version>1.4</version>
+        </dependency>
     </dependencies>
     
     <build>

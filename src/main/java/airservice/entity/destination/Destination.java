@@ -10,7 +10,12 @@ package airservice.entity.destination;
  */
 
 public abstract class Destination{
-    private String name;
+    @Override
+	public String toString() {
+		return "Destination [name=" + name + "]";
+	}
+
+	private String name;
 
     public Destination() {
     }

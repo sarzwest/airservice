@@ -4,9 +4,17 @@
  */
 package airservice.entity.destination;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import scala.Array;
 
 /**
  *
@@ -17,6 +25,7 @@ public class DestinationOutput extends Destination {
 
     private long id;
     private String uri;
+    private List<Destination> list = new ArrayList<Destination>(Arrays.asList(new Destination[]{new DestinationEntity("a"), new DestinationEntity("b")}));
 
     public DestinationOutput() {
     }
@@ -32,6 +41,12 @@ public class DestinationOutput extends Destination {
     public String getName() {
         return super.getName();
     }
+    
+    
+    
+    public List<Destination> getList() {
+		return list;
+	}
 
     public String getUri() {
         return uri;
@@ -48,4 +63,9 @@ public class DestinationOutput extends Destination {
     public long getId() {
         return id;
     }
+
+	@Override
+	public String toString() {
+		return "DestinationOutput [id=" + id + ", uri=" + uri + "]";
+	}
 }

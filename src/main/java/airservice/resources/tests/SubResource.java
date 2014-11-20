@@ -36,6 +36,13 @@ public class SubResource {
     public Response getSubResource(){
         return Response.status(Response.Status.OK).entity("toto je subresource").build();
     }
+    
+    @GET
+    @Path("getsomething")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSomething(){
+        return Response.status(Response.Status.OK).entity("toto je subresource 2").build();
+    }
 
     public String getText() {
         return text;

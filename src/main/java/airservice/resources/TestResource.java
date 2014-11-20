@@ -152,9 +152,9 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 */
 	@ApiOperation(value = "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu", responseContainer = "List", response = DestinationOutput.class)
 	@GET
-	@Path(value = "/collection")
+	@Path(value = "/retgenericentity")
 	@Produces(MediaType.APPLICATION_XML)
-	public Response collection() {
+	public GenericEntity<List<DestinationOutput>> collection() {
 		List<DestinationOutput> aList = new ArrayList<DestinationOutput>();
 		DestinationOutput dest = new DestinationOutput();
 		dest.setName("Praha");
@@ -165,8 +165,30 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 		GenericEntity<List<DestinationOutput>> genericEntity = new GenericEntity<List<DestinationOutput>>(
 				aList) {
 		};
-		return Response.status(Response.Status.OK).entity(genericEntity)
-				.build();
+		return genericEntity;
+	}
+
+	/**
+	 * Vnorene typy v sobe
+	 */
+	@ApiOperation(value = "Vnorene typy v sobe", responseContainer = "List<List>", response = DestinationOutput.class)
+	@GET
+	@Path(value = "/retgenericentityinnerdoublelist")
+	@Produces(MediaType.APPLICATION_JSON)
+	public GenericEntity<List<List<DestinationOutput>>> doubleInnerCollection() {
+		List<DestinationOutput> aList = new ArrayList<DestinationOutput>();
+		DestinationOutput dest = new DestinationOutput();
+		dest.setName("Praha");
+		aList.add(dest);
+		dest = new DestinationOutput();
+		dest.setName("Pv City");
+		aList.add(dest);
+		List<List<DestinationOutput>> outerList = new ArrayList<List<DestinationOutput>>();
+		outerList.add(aList);
+		GenericEntity<List<List<DestinationOutput>>> genericEntity = new GenericEntity<List<List<DestinationOutput>>>(
+				outerList) {
+		};
+		return genericEntity;
 	}
 
 	/**
@@ -177,12 +199,12 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 *            definovana v parametru metody.
 	 * @return trosku problem, mozna delat tak, jak to ma Miredot.
 	 */
-	@ApiOperation(value = "Tady jsem si hral s generiky. Trida wrapper v sobe obsahuje generika")
+	@ApiOperation(value = "Tady jsem si hral s generiky. Trida wrapper v sobe obsahuje generika", response = Wrapper.class)
 	@POST
 	@Path(value = "/rawtype")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Wrapper rawType(Wrapper<DestOutChild> incomeWrap) {
+	public Wrapper<DestinationOutput> rawType(Wrapper<DestOutChild> incomeWrap) {
 		Wrapper<DestinationOutput> wrapper = new Wrapper<DestinationOutput>(
 				new DestOutChild());
 		return wrapper;
@@ -301,18 +323,51 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	public Response getStatus() {
 		return Response.status(Status.OK).build();
 	}
-	
+
 	/**
 	 * Gets the status info
 	 */
 	@ApiOperation(value = "Gets the status info")
-	@ApiResponses({ @ApiResponse(code = 200, message = "Everything OK", response = DestinationOutput.class),
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "Everything OK", response = DestinationOutput.class),
 			@ApiResponse(code = 204, message = "NO content friend", response = Map.class) })
 	@GET
 	@Path("retcontenttype")
-	@Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON, "application/xml"})
+	@Produces({ MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON,
+			"application/xml" })
 	public Response getContentType() {
 		return Response.status(Status.OK).build();
+	}
+
+	/**
+	 * Return type is classic object
+	 */
+	@ApiOperation(value = "Return type is classic object", response = DestinationOutput.class)
+	@GET
+	@Path("retclassictype")
+	@Produces({ MediaType.APPLICATION_ATOM_XML })
+	public DestinationOutput getClassicType() {
+		DestinationOutput dstO = new DestinationOutput();
+		dstO.setId(1234);
+		dstO.setName("some name");
+		return dstO;
+	}
+
+	/**
+	 * Return type is collection of classic objects
+	 */
+	@ApiOperation(value = "Return type is collection of classic objects", response = DestinationOutput.class, responseContainer = "List")
+	@GET
+	@Path("retlistclassictype")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public List<DestinationOutput> getCollectionClassicTypes() {
+		DestinationOutput dstO = new DestinationOutput();
+		dstO.setId(1234);
+		dstO.setName("some name");
+		List<DestinationOutput> list = new ArrayList<DestinationOutput>();
+		list.add(dstO);
+		list.add(dstO);
+		return list;
 	}
 
 	/**
@@ -321,12 +376,13 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param incomeWrap
 	 * @return
 	 */
-	@ApiOperation(value = "Metoda vyhazuje WebApplicationException")
+	@ApiOperation(value = "Metoda vyhazuje WebApplicationException", response = Wrapper.class)
+	@ApiResponses({ @ApiResponse(code = 400, message = "varInWrapper.equals(\"a\")", response = String.class) })
 	@POST
 	@Path(value = "/exception")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Wrapper exception(Wrapper<DestOutChild> incomeWrap) {
+	public Wrapper<DestinationOutput> exception(Wrapper<DestOutChild> incomeWrap) {
 		if (incomeWrap.varInWrapper.equals("a")) {
 			throw new WebApplicationException(Response
 					.status(Response.Status.BAD_REQUEST)
@@ -349,9 +405,9 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * 
 	 * @return
 	 */
-	// @ApiOperation(value =
-	// "Metoda vraci subresourcelocator ktery vraci response")
-	// @GET
+	@ApiOperation(value = "Metoda vraci subresourcelocator ktery vraci response",
+			response = SubResource.class)
+	@GET
 	@Path("subresourcelocator")
 	@Produces(MediaType.APPLICATION_JSON)
 	public SubResource getSubResource() {

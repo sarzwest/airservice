@@ -36,7 +36,7 @@
       } ]
     } ]
   }, {
-    "path" : "/rest/test/collection",
+    "path" : "/rest/test/retgenericentity",
     "operations" : [ {
       "method" : "GET",
       "summary" : "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu",
@@ -96,7 +96,7 @@
       "method" : "POST",
       "summary" : "Tady jsem si hral s generiky. Trida wrapper v sobe obsahuje generika",
       "notes" : "",
-      "type" : "void",
+      "type" : "Wrapper",
       "nickname" : "rawType",
       "produces" : [ "application/json" ],
       "consumes" : [ "application/json" ],
@@ -118,40 +118,6 @@
         "type" : "Wrapper",
         "paramType" : "body",
         "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/encoded",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "nedekoduje url a query string",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "encoded",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "text",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ],
-      "responseMessages" : [ {
-        "code" : 200,
-        "message" : "status OK",
-        "responseModel" : "string"
       } ]
     } ]
   }, {
@@ -208,6 +174,265 @@
         "required" : true,
         "type" : "string",
         "paramType" : "path",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/retgenericentityinnerdoublelist",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Vnorene typy v sobe",
+      "notes" : "",
+      "type" : "List<List>[airservice.entity.destination.DestinationOutput]",
+      "nickname" : "doubleInnerCollection",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/encoded",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "nedekoduje url a query string",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "encoded",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "text",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "status OK",
+        "responseModel" : "string"
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/retclassictype",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Return type is classic object",
+      "notes" : "",
+      "type" : "destination",
+      "nickname" : "getClassicType",
+      "produces" : [ "application/atom+xml" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/retlistclassictype",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Return type is collection of classic objects",
+      "notes" : "",
+      "type" : "array",
+      "items" : {
+        "$ref" : "destination"
+      },
+      "nickname" : "getCollectionClassicTypes",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/subresourcelocator",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Metoda vraci subresourcelocator ktery vraci response",
+      "notes" : "",
+      "type" : "SubResource",
+      "nickname" : "getSubResource",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/exceptionmapper",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Vyjimka mapovana na response pomoci exception mapper",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "exceptionMapper",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/compressed",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Zkouska interceptoru",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getCompressed",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/qp",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Prichozi validace Je potreba posilat hlavicku Accept: application/json",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "twodigitnumber",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/reqent",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "@Valid zapina validaci na vsech fieldech obsahujici omezeni",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateReqEntity",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "UserEntity",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/async",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Asynchronni volani",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "async",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "AsyncResponse",
+        "paramType" : "body",
         "allowMultiple" : false
       } ]
     } ]
@@ -446,142 +671,12 @@
       } ]
     } ]
   }, {
-    "path" : "/rest/test/exceptionmapper",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Vyjimka mapovana na response pomoci exception mapper",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "exceptionMapper",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/compressed",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Zkouska interceptoru",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "getCompressed",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/valid/qp",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Prichozi validace Je potreba posilat hlavicku Accept: application/json",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "validateParam",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "twodigitnumber",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/valid/reqent",
-    "operations" : [ {
-      "method" : "POST",
-      "summary" : "@Valid zapina validaci na vsech fieldech obsahujici omezeni",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "validateReqEntity",
-      "produces" : [ "application/json" ],
-      "consumes" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "body",
-        "required" : false,
-        "type" : "UserEntity",
-        "paramType" : "body",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/async",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Asynchronni volani",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "async",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "body",
-        "required" : false,
-        "type" : "AsyncResponse",
-        "paramType" : "body",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
     "path" : "/rest/test/exception",
     "operations" : [ {
       "method" : "POST",
       "summary" : "Metoda vyhazuje WebApplicationException",
       "notes" : "",
-      "type" : "void",
+      "type" : "Wrapper",
       "nickname" : "exception",
       "produces" : [ "application/json" ],
       "consumes" : [ "application/json" ],
@@ -603,10 +698,29 @@
         "type" : "Wrapper",
         "paramType" : "body",
         "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 400,
+        "message" : "varInWrapper.equals(\"a\")",
+        "responseModel" : "string"
       } ]
     } ]
   } ],
   "models" : {
+    "SubResource" : {
+      "id" : "SubResource",
+      "properties" : {
+        "text" : {
+          "type" : "string"
+        },
+        "subResource" : {
+          "$ref" : "Response"
+        },
+        "something" : {
+          "$ref" : "Response"
+        }
+      }
+    },
     "AsyncResponse" : {
       "id" : "AsyncResponse",
       "properties" : {
@@ -628,6 +742,12 @@
         "varInDestChild" : {
           "type" : "string"
         },
+        "list" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "Destination"
+          }
+        },
         "uri" : {
           "type" : "string"
         },
@@ -648,11 +768,34 @@
         }
       }
     },
+    "Response" : {
+      "id" : "Response",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "metadata" : {
+          "$ref" : "javax.ws.rs.core.MultivaluedMap<java.lang.String, java.lang.Object>"
+        },
+        "entity" : {
+          "$ref" : "Object"
+        }
+      }
+    },
     "List" : {
       "id" : "List",
       "properties" : {
         "empty" : {
           "type" : "boolean"
+        }
+      }
+    },
+    "Destination" : {
+      "id" : "Destination",
+      "properties" : {
+        "name" : {
+          "type" : "string"
         }
       }
     },
@@ -683,6 +826,12 @@
         },
         "uri" : {
           "type" : "string"
+        },
+        "list" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "Destination"
+          }
         },
         "name" : {
           "type" : "string"
