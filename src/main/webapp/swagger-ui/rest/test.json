@@ -121,6 +121,40 @@
       } ]
     } ]
   }, {
+    "path" : "/rest/test/encoded",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "nedekoduje url a query string",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "encoded",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "text",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "status OK",
+        "responseModel" : "string"
+      } ]
+    } ]
+  }, {
     "path" : "/rest/test/annotatedfield",
     "operations" : [ {
       "method" : "GET",
@@ -201,249 +235,13 @@
       } ]
     } ]
   }, {
-    "path" : "/rest/test/encoded",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "nedekoduje url a query string",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "encoded",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "text",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ],
-      "responseMessages" : [ {
-        "code" : 200,
-        "message" : "status OK",
-        "responseModel" : "string"
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/retclassictype",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Return type is classic object",
-      "notes" : "",
-      "type" : "destination",
-      "nickname" : "getClassicType",
-      "produces" : [ "application/atom+xml" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/retlistclassictype",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Return type is collection of classic objects",
-      "notes" : "",
-      "type" : "array",
-      "items" : {
-        "$ref" : "destination"
-      },
-      "nickname" : "getCollectionClassicTypes",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/subresourcelocator",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Metoda vraci subresourcelocator ktery vraci response",
-      "notes" : "",
-      "type" : "SubResource",
-      "nickname" : "getSubResource",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/exceptionmapper",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Vyjimka mapovana na response pomoci exception mapper",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "exceptionMapper",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/compressed",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Zkouska interceptoru",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "getCompressed",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/valid/qp",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Prichozi validace Je potreba posilat hlavicku Accept: application/json",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "validateParam",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "twodigitnumber",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/valid/reqent",
-    "operations" : [ {
-      "method" : "POST",
-      "summary" : "@Valid zapina validaci na vsech fieldech obsahujici omezeni",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "validateReqEntity",
-      "produces" : [ "application/json" ],
-      "consumes" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "body",
-        "required" : false,
-        "type" : "UserEntity",
-        "paramType" : "body",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
-    "path" : "/rest/test/async",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "Asynchronni volani",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "async",
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "body",
-        "required" : false,
-        "type" : "AsyncResponse",
-        "paramType" : "body",
-        "allowMultiple" : false
-      } ]
-    } ]
-  }, {
     "path" : "/rest/test/reqlist",
     "operations" : [ {
       "method" : "POST",
       "summary" : "Metoda bere jako parametr kolekci objektu",
       "notes" : "",
       "type" : "void",
-      "nickname" : "regList",
+      "nickname" : "reqList",
       "produces" : [ "application/json" ],
       "consumes" : [ "application/json" ],
       "parameters" : [ {
@@ -666,6 +464,236 @@
         "name" : "body",
         "required" : false,
         "type" : "List",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/retclassictype",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Return type is classic object",
+      "notes" : "",
+      "type" : "destination",
+      "nickname" : "getClassicType",
+      "produces" : [ "application/atom+xml" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/retlistclassictype",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Return type is collection of classic objects",
+      "notes" : "",
+      "type" : "array",
+      "items" : {
+        "$ref" : "destination"
+      },
+      "nickname" : "getCollectionClassicTypes",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/subresourcelocator",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Metoda vraci subresourcelocator ktery vraci response",
+      "notes" : "",
+      "type" : "SubResource",
+      "nickname" : "getSubResource",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/exceptionmapper",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Vyjimka mapovana na response pomoci exception mapper",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "exceptionMapper",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/compressed",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Zkouska interceptoru",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "getCompressed",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/qp",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Prichozi validace Je potreba posilat hlavicku Accept: application/json",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateParam",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "twodigitnumber",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/retval",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Odchozi validace",
+      "notes" : "",
+      "type" : "string",
+      "nickname" : "validateParam2",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "twodigitnumber",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/valid/reqent",
+    "operations" : [ {
+      "method" : "POST",
+      "summary" : "@Valid zapina validaci na vsech fieldech obsahujici omezeni",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "validateReqEntity",
+      "produces" : [ "application/json" ],
+      "consumes" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "UserEntity",
+        "paramType" : "body",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/async",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "Asynchronni volani",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "async",
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "body",
+        "required" : false,
+        "type" : "AsyncResponse",
         "paramType" : "body",
         "allowMultiple" : false
       } ]

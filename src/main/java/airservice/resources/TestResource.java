@@ -218,7 +218,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	@Path(value = "/reqlist")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response regList(
+	public Response reqList(
 			@ApiParam(allowMultiple = true) List<DestinationOutput> destination) {
 		for (DestinationOutput d : destination) {
 			System.out.println(d.getName());
@@ -244,7 +244,8 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	@Path("queryparam")
 	public void getQueryParam(@QueryParam("q") String q) {
 		System.out.println(q);
-	}
+        System.out.println();
+    }
 
 	/**
 	 * MatrixParam jako parametr metody
@@ -481,7 +482,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 		throw new MyException();
 	}
 
-	// @ApiOperation(value = "Inheritance")
+	//@ApiOperation(value = "Inheritance")
 	@Override
 	public Response foo() {
 		return Response.ok("toto je inheritance", MediaType.APPLICATION_JSON)
@@ -523,6 +524,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param number
 	 * @return
 	 */
+    @ApiOperation(value = "Odchozi validace", response = String.class)
 	@GET
 	@Path("valid/retval")
 	@Valid
