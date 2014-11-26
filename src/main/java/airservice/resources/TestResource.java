@@ -23,11 +23,6 @@ import airservice.resources.tests.UserEntity;
 import airservice.resources.tests.Wrapper;
 
 import com.sun.jersey.api.client.ClientResponse.Status;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
-import com.wordnik.swagger.annotations.ApiResponse;
-import com.wordnik.swagger.annotations.ApiResponses;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -80,7 +75,6 @@ import org.jboss.resteasy.spi.validation.ValidateRequest;
  * 
  * @author Tomas "sarzwest" Jiricek
  */
-@Api(value = "/rest/test", description = "Testovaci resource class")
 @Path("/rest/test/")
 public class TestResource extends Class1 implements IFace2, ParentInterface,
 		Parent2Interface {
@@ -114,8 +108,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 *            bude tam %20. Obdobne se nebude dekodovat zbytek
 	 * @return
 	 */
-	@ApiOperation(value = "nedekoduje url a query string")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "status OK", response = String.class) })
 	@GET
 	@Path(value = "/encoded")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -127,7 +119,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Anotovany field je nasetovany, nastaven response object
 	 */
-	@ApiOperation(value = "Anotovany field je nasetovany", response = String.class)
 	@GET
 	@Path(value = "/annotatedfield")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -139,7 +130,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
      * 
      */
-	@ApiOperation("entity parameter test")
 	@POST
 	@Path("entityparam/{id}")
 	public Response newDestination(DestOutChild dest, @PathParam("id") String id) {
@@ -150,7 +140,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne
 	 * zachytit Listy JAXB objektu
 	 */
-	@ApiOperation(value = "GenericEntity priklad. Pouziva se, protoze JAX-RS nemuze korektne zachytit Listy JAXB objektu", responseContainer = "List", response = DestinationOutput.class)
 	@GET
 	@Path(value = "/retgenericentity")
 	@Produces(MediaType.APPLICATION_XML)
@@ -171,7 +160,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Vnorene typy v sobe
 	 */
-	@ApiOperation(value = "Vnorene typy v sobe", responseContainer = "List<List>", response = DestinationOutput.class)
 	@GET
 	@Path(value = "/retgenericentityinnerdoublelist")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -199,7 +187,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 *            definovana v parametru metody.
 	 * @return trosku problem, mozna delat tak, jak to ma Miredot.
 	 */
-	@ApiOperation(value = "Tady jsem si hral s generiky. Trida wrapper v sobe obsahuje generika", response = Wrapper.class)
 	@POST
 	@Path(value = "/rawtype")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -213,13 +200,11 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Metoda bere jako parametr kolekci objektu
 	 */
-	@ApiOperation(value = "Metoda bere jako parametr kolekci objektu")
 	@POST
 	@Path(value = "/reqlist")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response reqList(
-			@ApiParam(allowMultiple = true) List<DestinationOutput> destination) {
+	public Response reqList(List<DestinationOutput> destination) {
 		for (DestinationOutput d : destination) {
 			System.out.println(d.getName());
 		}
@@ -229,7 +214,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * PathParam jako parametr metody
 	 */
-	@ApiOperation(value = "PathParam jako parametr metody")
 	@GET
 	@Path("pathparam/{path}")
 	public void getPathParam(@PathParam("path") String path) {
@@ -239,7 +223,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * QueryParam jako parametr metody
 	 */
-	@ApiOperation(value = "QueryParam jako parametr metody")
 	@GET
 	@Path("queryparam")
 	public void getQueryParam(@QueryParam("q") String q) {
@@ -250,7 +233,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * MatrixParam jako parametr metody
 	 */
-	@ApiOperation(value = "MatrixParam jako parametr metody")
 	@POST
 	@Path("matrixparam")
 	public void getMatrixParam(@MatrixParam("m") List<String> m) {
@@ -260,7 +242,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * CookieParam jako parametr metody
 	 */
-	@ApiOperation(value = "CookieParam jako parametr metody")
 	@POST
 	@Path("cookieparam")
 	public void getCookieParam(@CookieParam("c") String c) {
@@ -270,7 +251,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * HeaderParam jako parametr metody
 	 */
-	@ApiOperation(value = "HeaderParam jako parametr metody")
 	@POST
 	@Path("headerparam")
 	public void getHeaderParam(@HeaderParam("h") String h) {
@@ -280,7 +260,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * FormParam jako parametr metody
 	 */
-	@ApiOperation(value = "FormParam jako parametr metody")
 	@POST
 	@Path("formparam")
 	public void getFormParam(@FormParam("f") String f) {
@@ -299,8 +278,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param src
 	 * @return
 	 */
-	@ApiOperation(value = "Metoda pouzivajici generika. Muze konzumovat jakykoliv typ, vsechno je"
-			+ " totiz serializovano do likedhashmapy")
 	@POST
 	@Path(value = "/rawtype2")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -316,9 +293,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Gets the status info
 	 */
-	@ApiOperation(value = "Gets the status info")
-	@ApiResponses({ @ApiResponse(code = 200, message = "Everything OK"),
-			@ApiResponse(code = 204, message = "NO content friend") })
 	@GET
 	@Path("status")
 	public Response getStatus() {
@@ -328,10 +302,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Gets the status info
 	 */
-	@ApiOperation(value = "Gets the status info")
-	@ApiResponses({
-			@ApiResponse(code = 200, message = "Everything OK", response = DestinationOutput.class),
-			@ApiResponse(code = 204, message = "NO content friend", response = Map.class) })
 	@GET
 	@Path("retcontenttype")
 	@Produces({ MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON,
@@ -343,7 +313,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Return type is classic object
 	 */
-	@ApiOperation(value = "Return type is classic object", response = DestinationOutput.class)
 	@GET
 	@Path("retclassictype")
 	@Produces({ MediaType.APPLICATION_ATOM_XML })
@@ -357,7 +326,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	/**
 	 * Return type is collection of classic objects
 	 */
-	@ApiOperation(value = "Return type is collection of classic objects", response = DestinationOutput.class, responseContainer = "List")
 	@GET
 	@Path("retlistclassictype")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -377,8 +345,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param incomeWrap
 	 * @return
 	 */
-	@ApiOperation(value = "Metoda vyhazuje WebApplicationException", response = Wrapper.class)
-	@ApiResponses({ @ApiResponse(code = 400, message = "varInWrapper.equals(\"a\")", response = String.class) })
 	@POST
 	@Path(value = "/exception")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -406,8 +372,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * 
 	 * @return
 	 */
-	@ApiOperation(value = "Metoda vraci subresourcelocator ktery vraci response",
-			response = SubResource.class)
 	@GET
 	@Path("subresourcelocator")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -475,7 +439,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 				.build();
 	}
 
-	@ApiOperation(value = "Vyjimka mapovana na response pomoci exception mapper")
 	@GET
 	@Path("exceptionmapper")
 	public Response exceptionMapper() throws MyException {
@@ -494,7 +457,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * 
 	 * @return
 	 */
-	@ApiOperation(value = "Zkouska interceptoru")
 	@GET
 	@Path("compressed")
 	@MyCompress
@@ -509,7 +471,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param number
 	 * @return
 	 */
-	@ApiOperation(value = "Prichozi validace Je potreba posilat hlavicku Accept: application/json")
 	@GET
 	@Path("valid/qp")
 	public Response validateParam(
@@ -524,7 +485,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param number
 	 * @return
 	 */
-    @ApiOperation(value = "Odchozi validace", response = String.class)
 	@GET
 	@Path("valid/retval")
 	@Valid
@@ -543,7 +503,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * @param user
 	 * @return
 	 */
-	@ApiOperation(value = "@Valid zapina validaci na vsech fieldech obsahujici omezeni")
 	@POST
 	@Path("valid/reqent")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -561,7 +520,6 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
 	 * 
 	 * @param ar
 	 */
-	@ApiOperation(value = "Asynchronni volani")
 	@GET
 	@Path("async")
 	public void async(@Suspended final AsyncResponse ar) {
