@@ -121,40 +121,6 @@
       } ]
     } ]
   }, {
-    "path" : "/rest/test/encoded",
-    "operations" : [ {
-      "method" : "GET",
-      "summary" : "nedekoduje url a query string",
-      "notes" : "",
-      "type" : "void",
-      "nickname" : "encoded",
-      "produces" : [ "application/json" ],
-      "parameters" : [ {
-        "name" : "queryparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      }, {
-        "name" : "headerparam",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "header",
-        "allowMultiple" : false
-      }, {
-        "name" : "text",
-        "required" : false,
-        "type" : "string",
-        "paramType" : "query",
-        "allowMultiple" : false
-      } ],
-      "responseMessages" : [ {
-        "code" : 200,
-        "message" : "status OK",
-        "responseModel" : "string"
-      } ]
-    } ]
-  }, {
     "path" : "/rest/test/annotatedfield",
     "operations" : [ {
       "method" : "GET",
@@ -232,6 +198,40 @@
         "type" : "string",
         "paramType" : "header",
         "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/rest/test/encoded",
+    "operations" : [ {
+      "method" : "GET",
+      "summary" : "nedekoduje url a query string",
+      "notes" : "",
+      "type" : "void",
+      "nickname" : "encoded",
+      "produces" : [ "application/json" ],
+      "parameters" : [ {
+        "name" : "queryparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "name" : "headerparam",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "header",
+        "allowMultiple" : false
+      }, {
+        "name" : "text",
+        "required" : false,
+        "type" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      } ],
+      "responseMessages" : [ {
+        "code" : 200,
+        "message" : "status OK",
+        "responseModel" : "string"
       } ]
     } ]
   }, {
@@ -741,10 +741,10 @@
         "text" : {
           "type" : "string"
         },
-        "subResource" : {
+        "something" : {
           "$ref" : "Response"
         },
-        "something" : {
+        "subResource" : {
           "$ref" : "Response"
         }
       }
