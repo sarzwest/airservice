@@ -107,14 +107,14 @@
                         <goals>
                             <goal>hello</goal>
                         </goals>
-                        <configuration>
-                            <scan>true</scan>
-                            <resourceClasses>
-                                
-                            </resourceClasses>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <scan>true</scan>
+                    <!--<resourceClasses>-->
+                    <!--airservice.resources.TestResource-->
+                    <!--</resourceClasses>-->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
