@@ -103,7 +103,7 @@
                 <executions>
                     <execution>
                         <id>generator</id>
-                        <phase>compile</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>hello</goal>
                         </goals>
