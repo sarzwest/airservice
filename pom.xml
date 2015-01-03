@@ -96,26 +96,26 @@
     
     <build>
         <plugins>
-            <plugin>
-                <groupId>Apition</groupId>
-                <artifactId>Apition</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <id>generator</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>hello</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <scan>true</scan>
-                    <!--<resourceClasses>-->
-                    <!--airservice.resources.TestResource-->
-                    <!--</resourceClasses>-->
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>apition</groupId>-->
+                <!--<artifactId>apition</artifactId>-->
+                <!--<version>0.0.1-SNAPSHOT</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>generator</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>hello</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<scan>true</scan>-->
+                    <!--&lt;!&ndash;<resourceClasses>&ndash;&gt;-->
+                    <!--&lt;!&ndash;airservice.resources.TestResource&ndash;&gt;-->
+                    <!--&lt;!&ndash;</resourceClasses>&ndash;&gt;-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

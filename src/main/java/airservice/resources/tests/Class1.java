@@ -7,7 +7,9 @@
 package airservice.resources.tests;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.MatrixParam;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 /**
@@ -15,7 +17,10 @@ import javax.ws.rs.core.Response;
  * @author Tomas "sarzwest" Jiricek
  */
 public abstract class Class1 extends Class1_1 implements IFace1_2{
-    
+
+
+    @QueryParam("queryparamparent")
+    String queryParent;
 //    @GET
 //    @Path("1")
     public abstract Response foo();
