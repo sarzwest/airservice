@@ -113,7 +113,7 @@
                             <!--Required parameters BEGIN-->
                             <locations>airservice.resources</locations>
                             <apiVersion>v1</apiVersion>
-                            <basePath>http://papastrojwork.local:8080/airservice-1.0</basePath>
+                            <basePath>http://localhost:8080/airservice-1.0</basePath>
                             <!--Required parameters END-->
 
                             <!--Optional parameters BEGIN-->
@@ -138,7 +138,7 @@
 
                             <!---Swagger JSON parameters BEGIN-->
                             <swaggerDirectory>${basedir}/src/main/webapp/swagger-ui</swaggerDirectory>
-                            <swaggerUIDocBasePath>http://papastrojwork.local:8080/airservice-1.0/swagger-ui</swaggerUIDocBasePath>
+                            <swaggerUIDocBasePath>http://localhost:8080/airservice-1.0/swagger-ui</swaggerUIDocBasePath>
                             <useOutputFlatStructure>false</useOutputFlatStructure>
                             <!---Swagger JSON parameters END-->
                             <!--Optional parameters END-->

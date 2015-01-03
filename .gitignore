@@ -6,4 +6,3 @@
 .idea
 airservice.iml
 *~
-/src/main/webapp/swagger-ui/rest/test.json

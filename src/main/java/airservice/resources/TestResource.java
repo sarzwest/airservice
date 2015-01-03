@@ -21,10 +21,7 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +35,7 @@ import java.util.logging.Logger;
  *
  * @author Tomas "sarzwest" Jiricek
  */
-@Api(value = "/rest/test", description = "Testovaci resource class")
+@Api(value = "/rest/test/{pathparam}", description = "Testovaci resource class")
 @Path("/rest/test/{pathparam}")
 @Produces("text/plain")
 public class TestResource extends Class1 implements IFace2, ParentInterface,
@@ -59,6 +56,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
     @FormParam("formparam")
     String form;
 
+    @ApiParam(defaultValue = "swagger def val")
     @DefaultValue("string const def value")
     @QueryParam("stringconstbean")
     StringConstBean stringConstBean;
@@ -99,7 +97,7 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
     @GET
     @POST
     @Path(value = "/encoded")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public Response encoded(@QueryParam("text") @Encoded String text, @QueryParam("fromstringbeanparam")FromStringBean f) {
         System.out.println(text);
         for(FromStringBean fsb: listbean){
@@ -397,10 +395,10 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
      *
      * @return
      */
-    @ApiOperation(value = "Metoda vraci subresourcelocator ktery vraci response",
-            response = SubResource.class)
+//    @ApiOperation(value = "Metoda vraci subresourcelocator ktery vraci response",
+//            response = SubResource.class)
     //@GET - kdyz tu je GET tak to neni subresource locator
-    @Path("subresourcelocator")
+    @Path("/subresourcelocator")
     //@Produces(MediaType.APPLICATION_JSON) - toto se vubec nebere v potaz
     public SubResource getSubResource() {
         return new SubResource("tadaaa");
