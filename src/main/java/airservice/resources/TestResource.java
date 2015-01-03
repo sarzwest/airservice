@@ -84,7 +84,8 @@ public class TestResource extends Class1 implements IFace2, ParentInterface,
     /**
      * Creates a new instance of TestResource
      */
-    public TestResource() {
+    public TestResource(@QueryParam("queryconst")String query) {
+        System.out.println(query);
     }
 
     /**
